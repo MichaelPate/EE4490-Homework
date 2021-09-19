@@ -23,13 +23,13 @@ module tb_BitCounter;
     initial
     begin
         #00     begin t_reset = 1; t_ClearCounter = 0; t_IncCounter = 0; end
-        #10     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
-        #10     begin t_reset = 0; t_ClearCounter = 1; t_IncCounter = 1; end
-        #10     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
-        #10     begin t_reset = 1; t_ClearCounter = 0; t_IncCounter = 1; end
-        #10     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
-        #10     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 0; end
-        #10     begin t_reset = 0; t_ClearCounter = 1; t_IncCounter = 0; end
+        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
+        #12     begin t_reset = 0; t_ClearCounter = 1; t_IncCounter = 1; end
+        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
+        #12     begin t_reset = 1; t_ClearCounter = 0; t_IncCounter = 1; end
+        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
+        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 0; end
+        #12     begin t_reset = 0; t_ClearCounter = 1; t_IncCounter = 0; end
         #10     $finish;
     end
 

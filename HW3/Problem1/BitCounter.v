@@ -7,19 +7,27 @@ module BitCounter(Count, ClearCounter, IncCounter, clk, reset);
 
     //assign Count = nCount;
 
+    // Handle reset or clear counter inputs
     always @(posedge clk)
     begin
-        if (reset == 1) 
+        if (reset == 1 | ClearCounter == 1)
         begin
-            nCount <= 8'b0;
-            Count <= 8'b0;
+            Count <= 0;
+            nCount <= 0;
         end
-        else 
+        else
+            Count <= nCount;
+    end
+
+    always @(posedge clk)
+    begin
+        if (reset == 1)
         begin
-            if (IncCounter == 1) nCount <= nCount + 1;
-            if (ClearCounter == 1) nCount <= 8'b0;
+            nCount <= 0;
         end
-        Count <= nCount;
+        else
+            nCount <= nCount + 1;
+        
     end
 
 endmodule
