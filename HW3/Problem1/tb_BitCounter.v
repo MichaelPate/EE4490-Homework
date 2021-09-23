@@ -7,30 +7,29 @@ module tb_BitCounter;
 
     BitCounter uut(t_Count, t_ClearCounter, t_IncCounter, t_clk, t_reset);
 
-    initial
-    begin
-        $dumpfile("tb_BbitCounter.vcd");
-        $dumpvars(0, tb_BitCounter);
+    initial begin $dumpfile("tb_BbitCounter.vcd"); $dumpvars(0, tb_BitCounter);
     end
 
     initial begin t_clk = 0; forever #1 t_clk = ~t_clk; end
 
-    initial
-    begin
-        t_ClearCounter = 0; t_IncCounter = 0; t_reset = 0;
-    end
-    
-    initial
-    begin
-        #00     begin t_reset = 1; t_ClearCounter = 0; t_IncCounter = 0; end
-        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
-        #12     begin t_reset = 0; t_ClearCounter = 1; t_IncCounter = 1; end
-        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
-        #12     begin t_reset = 1; t_ClearCounter = 0; t_IncCounter = 1; end
-        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 1; end
-        #12     begin t_reset = 0; t_ClearCounter = 0; t_IncCounter = 0; end
-        #12     begin t_reset = 0; t_ClearCounter = 1; t_IncCounter = 0; end
-        #10     $finish;
-    end
+    initial begin t_ClearCounter = 0; t_IncCounter = 0; t_reset = 1; end
 
+    initial
+        fork
+            #2      begin t_reset = 0; t_IncCounter = 1; end
+            #10     t_IncCounter = 0;
+            #18     t_IncCounter = 1;
+            #22     t_IncCounter = 0;
+            #26     t_ClearCounter = 1;
+            #28     t_ClearCounter = 0;
+            #30     t_IncCounter = 1;
+            #33     t_ClearCounter = 1;
+            #35     t_ClearCounter = 0;
+            #36     t_reset = 1;
+            #38     t_reset = 0;
+            #45     t_IncCounter = 0;
+            #50     t_ClearCounter = 0;
+            #55     t_IncCounter = 1;
+            #100    $finish;
+        join
 endmodule
