@@ -1,3 +1,9 @@
+// Michael Pate
+// Professor Chao Jiang
+// EE 4490 HDL Design
+// Homework 3 - September 23, 2021
+// BitCounter.v
+
 module BitCounter(Count, ClearCounter, IncCounter, clk, reset);
     output [7:0] Count;
     input ClearCounter, IncCounter;
