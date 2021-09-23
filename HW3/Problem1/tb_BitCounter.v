@@ -1,3 +1,9 @@
+// Michael Pate
+// Professor Chao Jiang
+// EE 4490 HDL Design
+// Homework 3 - September 23, 2021
+// tb_BitCounter.v
+
 `timescale 10ns/100ps
 module tb_BitCounter;
     wire [7:0] t_Count;
