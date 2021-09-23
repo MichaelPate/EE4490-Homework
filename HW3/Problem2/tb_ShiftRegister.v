@@ -1,4 +1,10 @@
-`timescale 10ns/100ps
+// Michael Pate
+// Professor Chao Jiang
+// EE 4490 HDL Design
+// Homework 3 - September 23, 2021
+// tb_ShiftRegister.v
+
+`timescale 10ns/10ps
 module tb_ShiftRegister;
     reg t_clk, t_reset;
     wire t_CurrentBit;
@@ -17,6 +23,18 @@ module tb_ShiftRegister;
 
     initial
         fork
-            #10 $finish;
+            #2  t_reset = 0;
+            #2  t_sw = 12'hABC;
+            #4  t_LoadRegister = 1;
+            #6  t_LoadRegister = 0;
+            #10 t_Rotate = 1;
+
+            #20 t_Rotate = 0;
+            #20 t_sw = 12'hDEF;
+            #25 t_LoadRegister = 1;
+            #28 t_LoadRegister = 0;
+            #30 t_Rotate = 1;
+
+            #60 $finish;
         join
 endmodule
