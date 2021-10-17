@@ -26,8 +26,7 @@ module displayModule(SerialDataOut,Ready2Go,SvnSegDisp,SvnSegDigit,systemClk,clr
 
 	NZRbitGEN SerialOutputGenerator (SerialDataOut,bdone,qmode,StartCoding,systemClk,clr);
 	
-	GRBStateMachine	TheReader (qmode,Done,LoadtheSW,ShiftPattern,StartCoding,
-          ClrCounter,IncCounter,ShipGRB,theBit,bdone,Count,NumLEDs,systemClk,clr,allDone);
+	GRBStateMachine	TheReader (qmode,Done,LoadtheSW,ShiftPattern,StartCoding,ClrCounter,IncCounter,ShipGRB,theBit,bdone,Count,NumLEDs,systemClk,clr,allDone);
 		  
 	SSStateMachine TURNITON (ShipGRB,Done,Go,systemClk,clr,allDone,Ready2Go);
 	
