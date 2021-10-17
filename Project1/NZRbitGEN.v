@@ -16,7 +16,7 @@
 //   of state 10 to meet the new reset time of > 280 us
 // EE 4490 
 //
-module theOutput(bout, bdone, qmode, startcoding, clk, reset);
+module NZRbitGEN(bout, bdone, qmode, startcoding, clk, reset);
   output  bout, bdone;  // bout  -- NZR signal
                           // bdone -- line code generation completed
   input   [1:0] qmode;  // Mode for generation:

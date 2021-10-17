@@ -2,13 +2,13 @@
 // HDL Project 1
 // This is the display module that will show what the LED's and the Score is
 
-module displayModule(theoutputbits,Ready2Go,LED_out,pos,clk,clr,player1,player2,NumLEDs,start);
+module displayModule(SerialDataOut,Ready2Go,SvnSegDisp,SvnSegDigit,clk,clr,player1,player2,NumLEDs,start);
 	// 5 Diode LED lights
-	output theoutputbits;
+	output SerialDataOut;
 	output Ready2Go;
 	// 8 counter LED for score
-	output [6:0] LED_out;
-	output [3:0] pos;
+	output [6:0] SvnSegDisp;
+	output [3:0] SvnSegDigit;
 	
 	// Clock and reset
 	// Player1's input Player2's input
@@ -24,7 +24,7 @@ module displayModule(theoutputbits,Ready2Go,LED_out,pos,clk,clr,player1,player2,
 	
 	//I have not modified the PONG module so we do not have the player inputs yet
 	
-	theOutput DemBits (theoutputbits,bdone,qmode,StartCoding,clk,clr);
+	NZRbitGEN SerialOutputGenerator (SerialDataOut,bdone,qmode,StartCoding,clk,clr);
 	
 	theGame	TheReader (qmode,Done,LoadtheSW,ShiftPattern,StartCoding,
           ClrCounter,IncCounter,ShipGRB,theBit,bdone,Count,NumLEDs,clk,clr,allDone);
@@ -38,9 +38,9 @@ module displayModule(theoutputbits,Ready2Go,LED_out,pos,clk,clr,player1,player2,
 	gameSM PONG (field,p1score,p2score,clk,clr,player1,player2,start);
 	
 	// Below is the mux machine and the hex converter for the score, we can add this later
-	Mux4Machine(muxd,pos,p1score,p2score,clk,clr,ClrCounter);
+	Mux4Machine(muxd,SvnSegDigit,p1score,p2score,clk,clr,ClrCounter);
 	
-	Hex27Seg(LED_out,muxd);
+	Hex27Seg(SvnSegDisp,muxd);
 	
 	
 	
