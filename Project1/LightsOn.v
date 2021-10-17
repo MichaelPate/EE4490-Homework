@@ -1,7 +1,7 @@
 // Ean Hughes & Michael
 // Project 1
 // This is the Solid state machine that determines whether we light up the lights or not
-module LightsOn(shipGRB,Done,Go,clk,reset,allDone,Ready2Go);
+module SSStateMachine(shipGRB,Done,Go,clk,reset,allDone,Ready2Go);
 	output	shipGRB, Ready2Go;
 	input	allDone, Done, Go;
 	input	clk, reset;

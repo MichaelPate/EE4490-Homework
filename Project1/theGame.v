@@ -3,7 +3,7 @@
 // Updated to support new WS2812B reset code of > 280 us
 // bdone ticks every bit period (1.28 us), RESET is > 280 us, use 281000 clks = 281 us
 
-module theGame(qmode,Done,LoadGRBPattern,ShiftPattern,StartCoding,
+module GRBStateMachine(qmode,Done,LoadGRBPattern,ShiftPattern,StartCoding,
           ClrCounter,IncCounter,ShipGRB,theBit,bdone,Count,NumLEDs,clk,reset,allDone);
 	output	[1:0]	qmode;
 	output	allDone, Done, LoadGRBPattern, ShiftPattern, StartCoding, ClrCounter, IncCounter;
