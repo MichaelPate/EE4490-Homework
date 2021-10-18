@@ -17,9 +17,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 21064
+INFO: [Synth 8-7075] Helper process launched with PID 26228
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'topLevel' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/topLevel.v:9]
 INFO: [Synth 8-6157] synthesizing module 'gameSM' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/gameSM.v:10]
@@ -47,18 +47,18 @@ INFO: [Synth 8-6157] synthesizing module 'ClockDivider' [C:/Users/Michael Pate/D
 INFO: [Synth 8-6155] done synthesizing module 'ClockDivider' (9#1) [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:1]
 INFO: [Synth 8-6155] done synthesizing module 'topLevel' (10#1) [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/topLevel.v:9]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1131.992 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -69,26 +69,26 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/topLevel_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1131.992 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'S_reg' in module 'SSStateMachine'
 ---------------------------------------------------------------------------------------------------
@@ -101,19 +101,17 @@ INFO: [Synth 8-802] inferred FSM for state register 'S_reg' in module 'SSStateMa
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'S_reg' using encoding 'sequential' in module 'SSStateMachine'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   24 Bit       Adders := 1     
 	   2 Input    8 Bit       Adders := 1     
 	   2 Input    7 Bit       Adders := 1     
 +---Registers : 
 	              120 Bit    Registers := 1     
-	               24 Bit    Registers := 1     
 	                8 Bit    Registers := 1     
 	                7 Bit    Registers := 1     
 	                1 Bit    Registers := 2     
@@ -176,47 +174,26 @@ CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'MainGameSM/nS_reg[0]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/gameSM.v:29]
 CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/gameSM.v:29]
 CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/gameSM.v:29]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[6]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[5]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[4]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[3]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[2]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[1]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 1st driver pin 'gameClkGenerator/currentCount_reg[0]__0/Q' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin Q with 2nd driver pin 'GND' [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
-CRITICAL WARNING: [Synth 8-6858] multi-driven net Q is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/ClockDivider.v:7]
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:12 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Timing Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:17 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Technology Mapping : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -234,37 +211,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished IO Insertion : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -277,32 +254,46 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+------+------+
-|      |Cell  |Count |
-+------+------+------+
-|1     |OBUF  |     2|
-|2     |OBUFT |    11|
-+------+------+------+
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    12|
+|3     |LUT1   |     5|
+|4     |LUT2   |     3|
+|5     |LUT3   |     6|
+|6     |LUT4   |   123|
+|7     |LUT5   |     7|
+|8     |LUT6   |    13|
+|9     |FDCE   |    32|
+|10    |FDRE   |    93|
+|11    |FDSE   |    60|
+|12    |IBUF   |     2|
+|13    |OBUF   |     2|
+|14    |OBUFT  |    11|
++------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 51 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1134.180 ; gain = 0.000
-Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:20 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Synthesis finished with 0 errors, 30 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1131.992 ; gain = 0.000
+Synthesis Optimization Complete : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1131.992 ; gain = 0.000
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1131.992 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 12 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1134.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1131.992 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete, checksum: e3f6c34e
+Synth Design complete, checksum: 946a0c3d
 INFO: [Common 17-83] Releasing license: Synthesis
-39 Infos, 1 Warnings, 51 Critical Warnings and 0 Errors encountered.
+41 Infos, 1 Warnings, 30 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1134.180 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 1131.992 ; gain = 0.000
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint 'C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.runs/synth_1/topLevel.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file topLevel_utilization_synth.rpt -pb topLevel_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Oct 17 21:42:58 2021...
+INFO: [Common 17-206] Exiting Vivado at Sun Oct 17 22:47:23 2021...

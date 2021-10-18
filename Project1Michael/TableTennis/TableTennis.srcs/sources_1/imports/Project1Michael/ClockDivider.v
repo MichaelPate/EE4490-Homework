@@ -2,9 +2,9 @@ module ClockDivider(in, out, rst);
     input in, rst;
     output out;
 
-    reg [23:0] currentCount;
+    reg [31:0] currentCount;
 
-    assign out = currentCount[20];
+    assign out = currentCount[23];
 
     always @(posedge in, negedge rst)
     begin

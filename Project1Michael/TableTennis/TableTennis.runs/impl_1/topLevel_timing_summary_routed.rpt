@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-| Date         : Sun Oct 17 21:43:38 2021
+| Date         : Sun Oct 17 22:48:08 2021
 | Host         : DESKTOP-TOC4V31 running 64-bit major release  (build 9200)
 | Command      : report_timing_summary -max_paths 10 -file topLevel_timing_summary_routed.rpt -pb topLevel_timing_summary_routed.pb -rpx topLevel_timing_summary_routed.rpx -warn_on_violation
 | Design       : topLevel
@@ -39,8 +39,9 @@ Timing Summary Report
 | ------------------
 ------------------------------------------------------------------------------------------------
 
-Rule  Severity  Description  Violations  
-----  --------  -----------  ----------  
+Rule       Severity  Description                    Violations  
+---------  --------  -----------------------------  ----------  
+TIMING-18  Warning   Missing input or output delay  3           
 
 Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
 
@@ -54,8 +55,8 @@ Table of Contents
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
 4. checking unconstrained_internal_endpoints (0)
-5. checking no_input_delay (0)
-6. checking no_output_delay (0)
+5. checking no_input_delay (1)
+6. checking no_output_delay (2)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
 9. checking loops (0)
@@ -85,16 +86,16 @@ Table of Contents
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (0)
+5. checking no_input_delay (1)
 ------------------------------
- There are 0 input ports with no input delay specified.
+ There is 1 input port with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
 
-6. checking no_output_delay (0)
+6. checking no_output_delay (2)
 -------------------------------
- There are 0 ports with no output delay specified.
+ There are 2 ports with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 
@@ -139,7 +140,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-         NA           NA                     NA                   NA           NA           NA                     NA                   NA           NA           NA                      NA                    NA  
+      5.437        0.000                      0                  358        0.219        0.000                      0                  358        4.500        0.000                       0                   186  
 
 
 All user specified timing constraints are met.
@@ -162,6 +163,7 @@ sys_clk_pin  {0.000 5.000}      10.000          100.000
 
 Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
 -----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+sys_clk_pin         5.437        0.000                      0                  358        0.219        0.000                      0                  358        4.500        0.000                       0                   186  
 
 
 ------------------------------------------------------------------------------------------------
@@ -186,5 +188,1188 @@ Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing 
 | Timing Details
 | --------------
 ------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk_pin
+  To Clock:  sys_clk_pin
+
+Setup :            0  Failing Endpoints,  Worst Slack        5.437ns,  Total Violation        0.000ns
+Hold  :            0  Failing Endpoints,  Worst Slack        0.219ns,  Total Violation        0.000ns
+PW    :            0  Failing Endpoints,  Worst Slack        4.500ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             5.437ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[4]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.074ns  (logic 0.828ns (20.324%)  route 3.246ns (79.676%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.821     9.233    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[4]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[4]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y4           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[4]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.233    
+  -------------------------------------------------------------------
+                         slack                                  5.437    
+
+Slack (MET) :             5.437ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[5]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.074ns  (logic 0.828ns (20.324%)  route 3.246ns (79.676%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.821     9.233    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[5]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[5]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y4           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[5]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.233    
+  -------------------------------------------------------------------
+                         slack                                  5.437    
+
+Slack (MET) :             5.437ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[6]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.074ns  (logic 0.828ns (20.324%)  route 3.246ns (79.676%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.821     9.233    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[6]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[6]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y4           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[6]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.233    
+  -------------------------------------------------------------------
+                         slack                                  5.437    
+
+Slack (MET) :             5.437ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[7]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.074ns  (logic 0.828ns (20.324%)  route 3.246ns (79.676%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.821     9.233    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[7]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y4           FDRE                                         r  LEDController/grbsm/rCount_reg[7]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y4           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[7]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.233    
+  -------------------------------------------------------------------
+                         slack                                  5.437    
+
+Slack (MET) :             5.452ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[12]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.059ns  (logic 0.828ns (20.402%)  route 3.231ns (79.598%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.806     9.218    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y6           FDRE                                         r  LEDController/grbsm/rCount_reg[12]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y6           FDRE                                         r  LEDController/grbsm/rCount_reg[12]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y6           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[12]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.218    
+  -------------------------------------------------------------------
+                         slack                                  5.452    
+
+Slack (MET) :             5.452ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[13]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.059ns  (logic 0.828ns (20.402%)  route 3.231ns (79.598%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.806     9.218    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y6           FDRE                                         r  LEDController/grbsm/rCount_reg[13]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y6           FDRE                                         r  LEDController/grbsm/rCount_reg[13]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y6           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[13]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.218    
+  -------------------------------------------------------------------
+                         slack                                  5.452    
+
+Slack (MET) :             5.452ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[14]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        4.059ns  (logic 0.828ns (20.402%)  route 3.231ns (79.598%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.806     9.218    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y6           FDRE                                         r  LEDController/grbsm/rCount_reg[14]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y6           FDRE                                         r  LEDController/grbsm/rCount_reg[14]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y6           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[14]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.218    
+  -------------------------------------------------------------------
+                         slack                                  5.452    
+
+Slack (MET) :             5.535ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[0]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        3.976ns  (logic 0.828ns (20.824%)  route 3.148ns (79.176%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.723     9.135    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y3           FDRE                                         r  LEDController/grbsm/rCount_reg[0]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y3           FDRE                                         r  LEDController/grbsm/rCount_reg[0]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y3           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[0]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.135    
+  -------------------------------------------------------------------
+                         slack                                  5.535    
+
+Slack (MET) :             5.535ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[1]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        3.976ns  (logic 0.828ns (20.824%)  route 3.148ns (79.176%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.723     9.135    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y3           FDRE                                         r  LEDController/grbsm/rCount_reg[1]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y3           FDRE                                         r  LEDController/grbsm/rCount_reg[1]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y3           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[1]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.135    
+  -------------------------------------------------------------------
+                         slack                                  5.535    
+
+Slack (MET) :             5.535ns  (required time - arrival time)
+  Source:                 LEDController/nzrgn/bcount_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/grbsm/rCount_reg[2]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (sys_clk_pin rise@10.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        3.976ns  (logic 0.828ns (20.824%)  route 3.148ns (79.176%))
+  Logic Levels:           3  (LUT3=1 LUT5=1 LUT6=1)
+  Clock Path Skew:        -0.025ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.860ns = ( 14.860 - 10.000 ) 
+    Source Clock Delay      (SCD):    5.159ns
+    Clock Pessimism Removal (CPR):    0.274ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.458     1.458 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.967     3.425    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.521 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.638     5.159    LEDController/nzrgn/CLK
+    SLICE_X3Y6           FDRE                                         r  LEDController/nzrgn/bcount_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y6           FDRE (Prop_fdre_C_Q)         0.456     5.615 r  LEDController/nzrgn/bcount_reg[0]/Q
+                         net (fo=8, routed)           1.143     6.759    LEDController/nzrgn/bcount_reg[0]
+    SLICE_X3Y5           LUT6 (Prop_lut6_I0_O)        0.124     6.883 f  LEDController/nzrgn/TheReg[119]_i_4/O
+                         net (fo=3, routed)           0.433     7.316    LEDController/btcnt/rCount_reg[0]
+    SLICE_X3Y5           LUT5 (Prop_lut5_I1_O)        0.124     7.440 f  LEDController/btcnt/FSM_sequential_S[1]_i_2/O
+                         net (fo=4, routed)           0.848     8.288    LEDController/btcnt/Count_reg[3]_0
+    SLICE_X2Y4           LUT3 (Prop_lut3_I0_O)        0.124     8.412 r  LEDController/btcnt/rCount[0]_i_1/O
+                         net (fo=15, routed)          0.723     9.135    LEDController/grbsm/rCount_reg[0]_0
+    SLICE_X1Y3           FDRE                                         r  LEDController/grbsm/rCount_reg[2]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                     10.000    10.000 r  
+    W5                                                0.000    10.000 r  clk (IN)
+                         net (fo=0)                   0.000    10.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         1.388    11.388 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.862    13.250    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091    13.341 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         1.519    14.860    LEDController/grbsm/CLK
+    SLICE_X1Y3           FDRE                                         r  LEDController/grbsm/rCount_reg[2]/C
+                         clock pessimism              0.274    15.134    
+                         clock uncertainty           -0.035    15.099    
+    SLICE_X1Y3           FDRE (Setup_fdre_C_R)       -0.429    14.670    LEDController/grbsm/rCount_reg[2]
+  -------------------------------------------------------------------
+                         required time                         14.670    
+                         arrival time                          -9.135    
+  -------------------------------------------------------------------
+                         slack                                  5.535    
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack (MET) :             0.219ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[109]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[110]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.340ns  (logic 0.247ns (72.697%)  route 0.093ns (27.303%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.596     1.479    LEDController/shftr/CLK
+    SLICE_X2Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[109]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y1           FDRE (Prop_fdre_C_Q)         0.148     1.627 r  LEDController/shftr/TheReg_reg[109]/Q
+                         net (fo=1, routed)           0.093     1.720    LEDController/sssm/Q[109]
+    SLICE_X2Y1           LUT4 (Prop_lut4_I3_O)        0.099     1.819 r  LEDController/sssm/TheReg[110]_i_1/O
+                         net (fo=1, routed)           0.000     1.819    LEDController/shftr/D[110]
+    SLICE_X2Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[110]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.867     1.994    LEDController/shftr/CLK
+    SLICE_X2Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[110]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X2Y1           FDRE (Hold_fdre_C_D)         0.121     1.600    LEDController/shftr/TheReg_reg[110]
+  -------------------------------------------------------------------
+                         required time                         -1.600    
+                         arrival time                           1.819    
+  -------------------------------------------------------------------
+                         slack                                  0.219    
+
+Slack (MET) :             0.219ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[85]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[86]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.340ns  (logic 0.247ns (72.697%)  route 0.093ns (27.303%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.596     1.479    LEDController/shftr/CLK
+    SLICE_X2Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[85]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y2           FDRE (Prop_fdre_C_Q)         0.148     1.627 r  LEDController/shftr/TheReg_reg[85]/Q
+                         net (fo=1, routed)           0.093     1.720    LEDController/sssm/Q[85]
+    SLICE_X2Y2           LUT4 (Prop_lut4_I3_O)        0.099     1.819 r  LEDController/sssm/TheReg[86]_i_1/O
+                         net (fo=1, routed)           0.000     1.819    LEDController/shftr/D[86]
+    SLICE_X2Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[86]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.867     1.994    LEDController/shftr/CLK
+    SLICE_X2Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[86]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X2Y2           FDRE (Hold_fdre_C_D)         0.121     1.600    LEDController/shftr/TheReg_reg[86]
+  -------------------------------------------------------------------
+                         required time                         -1.600    
+                         arrival time                           1.819    
+  -------------------------------------------------------------------
+                         slack                                  0.219    
+
+Slack (MET) :             0.219ns  (arrival time - required time)
+  Source:                 LEDController/btcnt/Count_reg[0]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/btcnt/Count_reg[5]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.356ns  (logic 0.209ns (58.681%)  route 0.147ns (41.319%))
+  Logic Levels:           1  (LUT6=1)
+  Clock Path Skew:        0.016ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.499ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.595     1.478    LEDController/btcnt/CLK
+    SLICE_X2Y6           FDRE                                         r  LEDController/btcnt/Count_reg[0]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X2Y6           FDRE (Prop_fdre_C_Q)         0.164     1.642 r  LEDController/btcnt/Count_reg[0]/Q
+                         net (fo=8, routed)           0.147     1.789    LEDController/btcnt/Count_reg[0]
+    SLICE_X2Y5           LUT6 (Prop_lut6_I2_O)        0.045     1.834 r  LEDController/btcnt/Count[5]_i_1/O
+                         net (fo=1, routed)           0.000     1.834    LEDController/btcnt/p_0_in[5]
+    SLICE_X2Y5           FDRE                                         r  LEDController/btcnt/Count_reg[5]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.866     1.993    LEDController/btcnt/CLK
+    SLICE_X2Y5           FDRE                                         r  LEDController/btcnt/Count_reg[5]/C
+                         clock pessimism             -0.499     1.494    
+    SLICE_X2Y5           FDRE (Hold_fdre_C_D)         0.121     1.615    LEDController/btcnt/Count_reg[5]
+  -------------------------------------------------------------------
+                         required time                         -1.615    
+                         arrival time                           1.834    
+  -------------------------------------------------------------------
+                         slack                                  0.219    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[103]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[104]/D
+                            (rising edge-triggered cell FDSE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.596     1.479    LEDController/shftr/CLK
+    SLICE_X3Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[103]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y1           FDRE (Prop_fdre_C_Q)         0.128     1.607 r  LEDController/shftr/TheReg_reg[103]/Q
+                         net (fo=1, routed)           0.086     1.693    LEDController/sssm/Q[103]
+    SLICE_X3Y1           LUT4 (Prop_lut4_I0_O)        0.098     1.791 r  LEDController/sssm/TheReg[104]_i_1/O
+                         net (fo=1, routed)           0.000     1.791    LEDController/shftr/D[104]
+    SLICE_X3Y1           FDSE                                         r  LEDController/shftr/TheReg_reg[104]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.867     1.994    LEDController/shftr/CLK
+    SLICE_X3Y1           FDSE                                         r  LEDController/shftr/TheReg_reg[104]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X3Y1           FDSE (Hold_fdse_C_D)         0.092     1.571    LEDController/shftr/TheReg_reg[104]
+  -------------------------------------------------------------------
+                         required time                         -1.571    
+                         arrival time                           1.791    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[115]/C
+                            (rising edge-triggered cell FDSE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[116]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.993ns
+    Source Clock Delay      (SCD):    1.478ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.595     1.478    LEDController/shftr/CLK
+    SLICE_X3Y3           FDSE                                         r  LEDController/shftr/TheReg_reg[115]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y3           FDSE (Prop_fdse_C_Q)         0.128     1.606 r  LEDController/shftr/TheReg_reg[115]/Q
+                         net (fo=1, routed)           0.086     1.692    LEDController/sssm/Q[115]
+    SLICE_X3Y3           LUT4 (Prop_lut4_I3_O)        0.098     1.790 r  LEDController/sssm/TheReg[116]_i_1/O
+                         net (fo=1, routed)           0.000     1.790    LEDController/shftr/D[116]
+    SLICE_X3Y3           FDRE                                         r  LEDController/shftr/TheReg_reg[116]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.866     1.993    LEDController/shftr/CLK
+    SLICE_X3Y3           FDRE                                         r  LEDController/shftr/TheReg_reg[116]/C
+                         clock pessimism             -0.515     1.478    
+    SLICE_X3Y3           FDRE (Hold_fdre_C_D)         0.092     1.570    LEDController/shftr/TheReg_reg[116]
+  -------------------------------------------------------------------
+                         required time                         -1.570    
+                         arrival time                           1.790    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[61]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[62]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.992ns
+    Source Clock Delay      (SCD):    1.477ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.594     1.477    LEDController/shftr/CLK
+    SLICE_X5Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[61]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y1           FDRE (Prop_fdre_C_Q)         0.128     1.605 r  LEDController/shftr/TheReg_reg[61]/Q
+                         net (fo=1, routed)           0.086     1.691    LEDController/sssm/Q[61]
+    SLICE_X5Y1           LUT4 (Prop_lut4_I3_O)        0.098     1.789 r  LEDController/sssm/TheReg[62]_i_1/O
+                         net (fo=1, routed)           0.000     1.789    LEDController/shftr/D[62]
+    SLICE_X5Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[62]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.865     1.992    LEDController/shftr/CLK
+    SLICE_X5Y1           FDRE                                         r  LEDController/shftr/TheReg_reg[62]/C
+                         clock pessimism             -0.515     1.477    
+    SLICE_X5Y1           FDRE (Hold_fdre_C_D)         0.092     1.569    LEDController/shftr/TheReg_reg[62]
+  -------------------------------------------------------------------
+                         required time                         -1.569    
+                         arrival time                           1.789    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[79]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[80]/D
+                            (rising edge-triggered cell FDSE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.596     1.479    LEDController/shftr/CLK
+    SLICE_X3Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[79]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X3Y2           FDRE (Prop_fdre_C_Q)         0.128     1.607 r  LEDController/shftr/TheReg_reg[79]/Q
+                         net (fo=1, routed)           0.086     1.693    LEDController/sssm/Q[79]
+    SLICE_X3Y2           LUT4 (Prop_lut4_I0_O)        0.098     1.791 r  LEDController/sssm/TheReg[80]_i_1/O
+                         net (fo=1, routed)           0.000     1.791    LEDController/shftr/D[80]
+    SLICE_X3Y2           FDSE                                         r  LEDController/shftr/TheReg_reg[80]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.867     1.994    LEDController/shftr/CLK
+    SLICE_X3Y2           FDSE                                         r  LEDController/shftr/TheReg_reg[80]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X3Y2           FDSE (Hold_fdse_C_D)         0.092     1.571    LEDController/shftr/TheReg_reg[80]
+  -------------------------------------------------------------------
+                         required time                         -1.571    
+                         arrival time                           1.791    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[93]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[94]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.994ns
+    Source Clock Delay      (SCD):    1.479ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.596     1.479    LEDController/shftr/CLK
+    SLICE_X1Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[93]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X1Y2           FDRE (Prop_fdre_C_Q)         0.128     1.607 r  LEDController/shftr/TheReg_reg[93]/Q
+                         net (fo=1, routed)           0.086     1.693    LEDController/sssm/Q[93]
+    SLICE_X1Y2           LUT4 (Prop_lut4_I3_O)        0.098     1.791 r  LEDController/sssm/TheReg[94]_i_1/O
+                         net (fo=1, routed)           0.000     1.791    LEDController/shftr/D[94]
+    SLICE_X1Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[94]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.867     1.994    LEDController/shftr/CLK
+    SLICE_X1Y2           FDRE                                         r  LEDController/shftr/TheReg_reg[94]/C
+                         clock pessimism             -0.515     1.479    
+    SLICE_X1Y2           FDRE (Hold_fdre_C_D)         0.092     1.571    LEDController/shftr/TheReg_reg[94]
+  -------------------------------------------------------------------
+                         required time                         -1.571    
+                         arrival time                           1.791    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[13]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[14]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.991ns
+    Source Clock Delay      (SCD):    1.476ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.593     1.476    LEDController/shftr/CLK
+    SLICE_X5Y4           FDRE                                         r  LEDController/shftr/TheReg_reg[13]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y4           FDRE (Prop_fdre_C_Q)         0.128     1.604 r  LEDController/shftr/TheReg_reg[13]/Q
+                         net (fo=1, routed)           0.086     1.690    LEDController/sssm/Q[13]
+    SLICE_X5Y4           LUT4 (Prop_lut4_I3_O)        0.098     1.788 r  LEDController/sssm/TheReg[14]_i_1/O
+                         net (fo=1, routed)           0.000     1.788    LEDController/shftr/D[14]
+    SLICE_X5Y4           FDRE                                         r  LEDController/shftr/TheReg_reg[14]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.864     1.991    LEDController/shftr/CLK
+    SLICE_X5Y4           FDRE                                         r  LEDController/shftr/TheReg_reg[14]/C
+                         clock pessimism             -0.515     1.476    
+    SLICE_X5Y4           FDRE (Hold_fdre_C_D)         0.092     1.568    LEDController/shftr/TheReg_reg[14]
+  -------------------------------------------------------------------
+                         required time                         -1.568    
+                         arrival time                           1.788    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+Slack (MET) :             0.220ns  (arrival time - required time)
+  Source:                 LEDController/shftr/TheReg_reg[19]/C
+                            (rising edge-triggered cell FDSE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            LEDController/shftr/TheReg_reg[20]/D
+                            (rising edge-triggered cell FDRE clocked by sys_clk_pin  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             sys_clk_pin
+  Path Type:              Hold (Min at Fast Process Corner)
+  Requirement:            0.000ns  (sys_clk_pin rise@0.000ns - sys_clk_pin rise@0.000ns)
+  Data Path Delay:        0.312ns  (logic 0.226ns (72.544%)  route 0.086ns (27.456%))
+  Logic Levels:           1  (LUT4=1)
+  Clock Path Skew:        0.000ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    1.991ns
+    Source Clock Delay      (SCD):    1.476ns
+    Clock Pessimism Removal (CPR):    0.515ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.226     0.226 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.631     0.858    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.884 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.593     1.476    LEDController/shftr/CLK
+    SLICE_X5Y5           FDSE                                         r  LEDController/shftr/TheReg_reg[19]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X5Y5           FDSE (Prop_fdse_C_Q)         0.128     1.604 r  LEDController/shftr/TheReg_reg[19]/Q
+                         net (fo=1, routed)           0.086     1.690    LEDController/sssm/Q[19]
+    SLICE_X5Y5           LUT4 (Prop_lut4_I3_O)        0.098     1.788 r  LEDController/sssm/TheReg[20]_i_1/O
+                         net (fo=1, routed)           0.000     1.788    LEDController/shftr/D[20]
+    SLICE_X5Y5           FDRE                                         r  LEDController/shftr/TheReg_reg[20]/D
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk_pin rise edge)
+                                                      0.000     0.000 r  
+    W5                                                0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    W5                   IBUF (Prop_ibuf_I_O)         0.414     0.414 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.685     1.099    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.128 r  clk_IBUF_BUFG_inst/O
+                         net (fo=185, routed)         0.864     1.991    LEDController/shftr/CLK
+    SLICE_X5Y5           FDRE                                         r  LEDController/shftr/TheReg_reg[20]/C
+                         clock pessimism             -0.515     1.476    
+    SLICE_X5Y5           FDRE (Hold_fdre_C_D)         0.092     1.568    LEDController/shftr/TheReg_reg[20]
+  -------------------------------------------------------------------
+                         required time                         -1.568    
+                         arrival time                           1.788    
+  -------------------------------------------------------------------
+                         slack                                  0.220    
+
+
+
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         sys_clk_pin
+Waveform(ns):       { 0.000 5.000 }
+Period(ns):         10.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
+Min Period        n/a     BUFG/I   n/a            2.155         10.000      7.845      BUFGCTRL_X0Y0  clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y6     LEDController/btcnt/Count_reg[0]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y6     LEDController/btcnt/Count_reg[1]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y5     LEDController/btcnt/Count_reg[2]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y5     LEDController/btcnt/Count_reg[3]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y5     LEDController/btcnt/Count_reg[4]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y5     LEDController/btcnt/Count_reg[5]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y3     LEDController/btcnt/Count_reg[6]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X2Y3     LEDController/btcnt/Count_reg[7]/C
+Min Period        n/a     FDRE/C   n/a            1.000         10.000      9.000      SLICE_X3Y4     LEDController/grbsm/S_reg_inv/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[0]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[0]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[1]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[1]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[2]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[2]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[3]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[3]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[4]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[4]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[0]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[0]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[1]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y6     LEDController/btcnt/Count_reg[1]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[2]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[2]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[3]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[3]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[4]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         5.000       4.500      SLICE_X2Y5     LEDController/btcnt/Count_reg[4]/C
+
 
 

@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Sun Oct 17 21:43:06 2021
-# Process ID: 23532
+# Start of session at: Sun Oct 17 22:47:30 2021
+# Process ID: 2768
 # Current directory: C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.runs/impl_1
 # Command line: vivado.exe -log topLevel.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source topLevel.tcl -notrace
 # Log file: C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.runs/impl_1/topLevel.vdi
