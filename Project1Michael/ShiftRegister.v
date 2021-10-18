@@ -3,9 +3,9 @@
 // shifts it out one bit at a time
 // keeps sending the same 24 bits, so same color to all modules
 
-module ShiftRegister(CurrentBit,sw,LoadRegister,RotateRegisterLeft,clk,reset);
+module ShiftRegister(CurrentBit,ParallelDataIn,LoadRegister,RotateRegisterLeft,clk,reset);
   output CurrentBit;
-  input  [15:4] sw;
+  input  [23:0] ParallelDataIn;
   input  LoadRegister, RotateRegisterLeft;
   input  clk, reset;
 
@@ -17,10 +17,10 @@ module ShiftRegister(CurrentBit,sw,LoadRegister,RotateRegisterLeft,clk,reset);
     if(reset) TheReg <= DEFAULTREG;
     else  TheReg <= nTheReg;
       
-    // switches set the upper 4 bits of the GRB control bytes
-  always @(TheReg, LoadRegister, RotateRegisterLeft, sw)
+    // ParallelDataInitches set the upper 4 bits of the GRB control bytes
+  always @(TheReg, LoadRegister, RotateRegisterLeft, ParallelDataIn)
     if(LoadRegister)
-      nTheReg = {sw[15:12],4'b0000,sw[11:8],4'b0000,sw[7:4],4'b0000};
+      nTheReg = ParallelDataIn;
     else if(RotateRegisterLeft)
       nTheReg = {TheReg[22:0],TheReg[23]};
     else

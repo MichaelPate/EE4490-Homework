@@ -3,9 +3,9 @@
 // VERY basic design, sends same color to all modules
 // Updated to support new WS2812B reset code of > 280 us
 
-module SimpleSend(dataOut,sw,NumLEDs,Go,clk,reset,Ready2Go);
+module SimpleSend(dataOut,ColorDataIn,NumLEDs,Go,clk,reset,Ready2Go);
 	output	dataOut, Ready2Go;
-	input   [15:4] sw;
+	input   [23:0] ColorDataIn;
 	input   [3:1]  NumLEDs;
 	input	Go, clk, reset;
 
@@ -17,7 +17,7 @@ module SimpleSend(dataOut,sw,NumLEDs,Go,clk,reset,Ready2Go);
 	SSStateMachine	sssm(shipGRB,Done,Go,clk,reset,allDone,Ready2Go);
 	GRBStateMachine grbsm(qmode,Done,LoadGRBPattern,ShiftPattern,StartCoding,ClrCounter,IncCounter,
                               shipGRB,theBit,bdone,Count,NumLEDs,clk,reset,allDone);
-	ShiftRegister   shftr(theBit,sw,LoadGRBPattern,ShiftPattern,clk,reset);
+	ShiftRegister   shftr(theBit,ColorDataIn,LoadGRBPattern,ShiftPattern,clk,reset);
 	BitCounter	btcnt(Count,ClrCounter,IncCounter,clk,reset);
 	NZRbitGEN	nzrgn(dataOut,bdone,qmode,StartCoding,clk,reset);
 endmodule
