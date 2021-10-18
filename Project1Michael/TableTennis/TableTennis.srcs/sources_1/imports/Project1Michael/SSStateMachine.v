@@ -17,7 +17,7 @@ module SSStateMachine(shipGRB,Done,Go,clk,reset,allDone,Ready2Go);
 	parameter	SWAIT=2'b00, SSHIP=2'b01, SRET=2'b10, SDBOUNCE=2'b11;
 
 	always @(posedge clk)
-		if(reset)
+		if(reset==0)
 			S <= SWAIT;
 		else
 			S <= nS;

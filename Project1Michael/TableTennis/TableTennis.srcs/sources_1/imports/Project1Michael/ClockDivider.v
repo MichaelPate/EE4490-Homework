@@ -4,7 +4,7 @@ module ClockDivider(in, out, rst);
 
     reg [31:0] currentCount;
 
-    assign out = currentCount[23];
+    assign out = currentCount[5];
 
     always @(posedge in, negedge rst)
     begin

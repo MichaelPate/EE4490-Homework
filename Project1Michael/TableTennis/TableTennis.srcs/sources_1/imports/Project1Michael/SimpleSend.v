@@ -8,7 +8,7 @@ module SimpleSend(dataOut,ColorDataIn,Go,clk,reset,Ready2Go);
 	input   [119:0] ColorDataIn;
 	input	Go, clk, reset;
 
-	reg [3:0] NumLEDs = 4'd5;
+	reg [2:0] NumLEDs = 3'd5;
 
 	wire		shipGRB, Done, allDone;
 	wire [1:0]	qmode;

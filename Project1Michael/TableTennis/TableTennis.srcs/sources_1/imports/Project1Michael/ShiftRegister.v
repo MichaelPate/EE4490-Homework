@@ -14,7 +14,7 @@ module ShiftRegister(CurrentBit,ParallelDataIn,LoadRegister,RotateRegisterLeft,c
   reg [119:0]  TheReg, nTheReg;  // 24 bits for GRB control
 
   always @(posedge clk)
-    if(reset) TheReg <= DEFAULTREG;
+    if(reset==0) TheReg <= DEFAULTREG;
     else  TheReg <= nTheReg;
       
     // ParallelDataInitches set the upper 4 bits of the GRB control bytes

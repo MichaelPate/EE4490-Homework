@@ -19,7 +19,7 @@ module GRBStateMachine(qmode,Done,LoadGRBPattern,ShiftPattern,StartCoding,
   reg      [14:0]  rCount;  // counter for RESET time
 
 	always @(posedge clk)
-		if(reset)
+		if(reset==0)
 			S <= SSHIPRET;
 		else
 			S <= nS;
@@ -55,7 +55,7 @@ module GRBStateMachine(qmode,Done,LoadGRBPattern,ShiftPattern,StartCoding,
   always @(posedge clk)
   // counts time for RESET, 10 ns per tick
   begin
-    if(reset || Done)  // Done sending bits, start RESET
+    if((reset==0) || Done)  // Done sending bits, start RESET
       rCount <= 0;
     else if (S==SSHIPRET)
       rCount <= rCount+1; 

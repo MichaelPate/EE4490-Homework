@@ -13,11 +13,11 @@ module BitCounter(Count,ClearCounter,IncCounter,clk,reset);
   reg [7:0] Count, nCount;
 
   always @(posedge clk)
-    if(reset) Count <= 0;
+    if(reset==0) Count <= 0;
     else Count <= nCount;
 
   always @(reset, Count, ClearCounter, IncCounter)
-    if(reset || ClearCounter)
+    if((reset==0) || ClearCounter)
       nCount = 0;
     else if(IncCounter)
       nCount = Count+1;

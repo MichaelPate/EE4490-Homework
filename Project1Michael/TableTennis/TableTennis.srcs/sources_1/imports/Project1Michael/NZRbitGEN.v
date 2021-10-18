@@ -34,7 +34,7 @@ module NZRbitGEN(bout, bdone, qmode, startcoding, clk, reset);
   always @(posedge clk)
   // Depends on 7'h7F->7'h00 rollover at 1.28 us
   begin
-    if(reset || startcoding)
+    if((reset==0) || startcoding)
       bcount <= 0;
     else
       bcount <= bcount+1; 

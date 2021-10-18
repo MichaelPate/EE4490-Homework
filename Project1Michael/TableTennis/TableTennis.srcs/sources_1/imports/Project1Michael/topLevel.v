@@ -21,12 +21,12 @@ module topLevel(RGBSerialData, sevenSegmentDigit, sevenSegmentData, readyLED, cl
     wire ReadyForNextState;
     wire rst;
 
-    assign readyLED = gameClk;
+    assign readyLED = ReadyForNextState;
     assign rst = !rstAL;
  
     gameSM MainGameSM(currentField, player1score, player2score,
         gameClk, rst, ReadyForNextState, paddle1, paddle2, serve);
-
+ 
     SimpleSend LEDController(RGBSerialData, colorData, gameClk, clk, rst, ReadyForNextState);
 
     // Need an adapter that takes currentField and generates 120 bits based off that.
