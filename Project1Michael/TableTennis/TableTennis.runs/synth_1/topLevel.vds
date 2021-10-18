@@ -2,10 +2,27 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:33 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Sun Oct 17 21:05:14 2021
-# Process ID: 9036
+# Start of session at: Sun Oct 17 21:25:13 2021
+# Process ID: 23104
 # Current directory: C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.runs/synth_1
 # Command line: vivado.exe -log topLevel.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source topLevel.tcl
 # Log file: C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.runs/synth_1/topLevel.vds
 # Journal file: C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.runs/synth_1\vivado.jou
 #-----------------------------------------------------------
+source topLevel.tcl -notrace
+Command: synth_design -top topLevel -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 25824
+ERROR: [Synth 8-1031] readyLED is not declared [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/topLevel.v:9]
+INFO: [Synth 8-2350] module topLevel ignored due to previous errors [C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/topLevel.v:9]
+Failed to read verilog 'C:/Users/Michael Pate/Documents/HDL-Homework/Project1Michael/TableTennis/TableTennis.srcs/sources_1/imports/Project1Michael/topLevel.v'
+INFO: [Common 17-83] Releasing license: Synthesis
+7 Infos, 0 Warnings, 0 Critical Warnings and 2 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Synthesis failed - please see the console or run log file for details
+INFO: [Common 17-206] Exiting Vivado at Sun Oct 17 21:25:23 2021...

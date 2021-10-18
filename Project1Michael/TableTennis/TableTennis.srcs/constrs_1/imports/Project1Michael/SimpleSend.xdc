@@ -15,16 +15,19 @@ set_property CONFIG_VOLTAGE 3.3 [current_design]
 
 ## Switches
 # sw[0] for reset signal
-set_property PACKAGE_PIN V17 [get_ports {clr}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {clr}]
-	
+#set_property PACKAGE_PIN V17 [get_ports {clr}]					
+#	set_property IOSTANDARD LVCMOS33 [get_ports {clr}]
+
+set_property PACKAGE_PIN U16 [get_ports {readyLED}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {readyLED}]
+
 # sw[1-3] to specify number of LED modules	
-set_property PACKAGE_PIN V16 [get_ports {NumLEDs[1]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {NumLEDs[1]}]
-set_property PACKAGE_PIN W16 [get_ports {NumLEDs[2]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {NumLEDs[2]}]
-set_property PACKAGE_PIN W17 [get_ports {NumLEDs[3]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {NumLEDs[3]}]
+#set_property PACKAGE_PIN V16 [get_ports {NumLEDs[1]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {NumLEDs[1]}]
+#set_property PACKAGE_PIN W16 [get_ports {NumLEDs[2]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {NumLEDs[2]}]
+#set_property PACKAGE_PIN W17 [get_ports {NumLEDs[3]}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {NumLEDs[3]}]
 	
 #sw[4-7] upper 4 bits of Blue byte, sw[7] is the MSB
 #set_property PACKAGE_PIN W15 [get_ports {sw[4]}]					
@@ -58,53 +61,53 @@ set_property PACKAGE_PIN W17 [get_ports {NumLEDs[3]}]
  
 ## LEDs
 # led0, to signify when it's okay to press Go button
-set_property PACKAGE_PIN U16 [get_ports {Ready2Go}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {Ready2Go}] 
+#set_property PACKAGE_PIN U16 [get_ports {Ready2Go}]					
+	#set_property IOSTANDARD LVCMOS33 [get_ports {Ready2Go}] 
  
 ## Button
 # BTNC
 #set_property PACKAGE_PIN U18 [get_ports {Go}]                    
     #set_property IOSTANDARD LVCMOS33 [get_ports {Go}]
-set_property PACKAGE_PIN T18 [get_ports {start}]						
-	set_property IOSTANDARD LVCMOS33 [get_ports {start}]
-set_property PACKAGE_PIN W19 [get_ports {player1}]						
-	set_property IOSTANDARD LVCMOS33 [get_ports {player1}]
-set_property PACKAGE_PIN T17 [get_ports {player2}]						
-	set_property IOSTANDARD LVCMOS33 [get_ports {player2}]
+set_property PACKAGE_PIN T18 [get_ports {serve}]						
+	set_property IOSTANDARD LVCMOS33 [get_ports {serve}]
+set_property PACKAGE_PIN W19 [get_ports {paddle1}]						
+	set_property IOSTANDARD LVCMOS33 [get_ports {paddle1}]
+set_property PACKAGE_PIN T17 [get_ports {paddle2}]						
+	set_property IOSTANDARD LVCMOS33 [get_ports {paddle2}]
 	
 #
 ###Pmod Header JA
 ##Sch name = JA1
 # this is the data being sent to the LED strip
-set_property PACKAGE_PIN J1 [get_ports {theoutputbits}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {theoutputbits}]
+set_property PACKAGE_PIN J1 [get_ports {RGBSerialData}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {RGBSerialData}]
 
 ##7 segment display
-set_property PACKAGE_PIN W7 [get_ports {LED_out[6]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[6]}]
-set_property PACKAGE_PIN W6 [get_ports {LED_out[5]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[5]}]
-set_property PACKAGE_PIN U8 [get_ports {LED_out[4]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[4]}]
-set_property PACKAGE_PIN V8 [get_ports {LED_out[3]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[3]}]
-set_property PACKAGE_PIN U5 [get_ports {LED_out[2]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[2]}]
-set_property PACKAGE_PIN V5 [get_ports {LED_out[1]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[1]}]
-set_property PACKAGE_PIN U7 [get_ports {LED_out[0]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {LED_out[0]}]
+set_property PACKAGE_PIN W7 [get_ports {sevenSegmentData[6]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[6]}]
+set_property PACKAGE_PIN W6 [get_ports {sevenSegmentData[5]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[5]}]
+set_property PACKAGE_PIN U8 [get_ports {sevenSegmentData[4]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[4]}]
+set_property PACKAGE_PIN V8 [get_ports {sevenSegmentData[3]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[3]}]
+set_property PACKAGE_PIN U5 [get_ports {sevenSegmentData[2]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[2]}]
+set_property PACKAGE_PIN V5 [get_ports {sevenSegmentData[1]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[1]}]
+set_property PACKAGE_PIN U7 [get_ports {sevenSegmentData[0]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentData[0]}]
 
 #set_property PACKAGE_PIN V7 [get_ports {Pos1[3:0]}]							
 	#set_property IOSTANDARD LVCMOS33 [get_ports {Pos1[3:0]}]
 
-set_property PACKAGE_PIN U2 [get_ports {pos[0]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {pos[0]}]
-set_property PACKAGE_PIN U4 [get_ports {pos[1]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {pos[1]}]
-set_property PACKAGE_PIN V4 [get_ports {pos[2]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {pos[2]}]
-set_property PACKAGE_PIN W4 [get_ports {pos[3]}]					
-	set_property IOSTANDARD LVCMOS33 [get_ports {pos[3]}]
+set_property PACKAGE_PIN U2 [get_ports {sevenSegmentDigit[0]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentDigit[0]}]
+set_property PACKAGE_PIN U4 [get_ports {sevenSegmentDigit[1]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentDigit[1]}]
+set_property PACKAGE_PIN V4 [get_ports {sevenSegmentDigit[2]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentDigit[2]}]
+set_property PACKAGE_PIN W4 [get_ports {sevenSegmentDigit[3]}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {sevenSegmentDigit[3]}]
 	
 ## End of file SimpleSend.xdc
