@@ -17,16 +17,19 @@ module topLevel();
     wire player1score, player2score;
     wire gameClk;
     wire [119:0] colorData;
+    wire ReadyForNextState;
 
     gameSM MainGameSM(currentField, player1score, player2score,
-        gameClk, rst, paddle1, paddle2, serve);
+        gameClk, rst, ReadyForNextState, paddle1, paddle2, serve);
 
-    SimpleSend LEDController(RGBSerialData, colorData, /** Go **/, clk, rst, /** Ready2Go **/);
+    SimpleSend LEDController(RGBSerialData, colorData, gameClk, clk, rst, ReadyForNextState);
 
-    LEDPatternGenerator FieldStateAdapter(colorData, currentField);
     // Need an adapter that takes currentField and generates 120 bits based off that.
     // Those 120 bits go to SimpleSend's ColorDataIn.
     // Which gets passed to a shift register for output.
     // Just need to tick SimpleSend's Go input
+    LEDPatternGenerator FieldStateAdapter(colorData, currentField);
+
+    // Need to generate gameClk.
 
 endmodule

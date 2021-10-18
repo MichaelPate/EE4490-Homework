@@ -7,8 +7,8 @@
 	gameSM.v
 **/
 
-module gameSM(field,p1score,p2score,clk,rst,paddle1,paddle2, serve);
-	input clk, rst;
+module gameSM(field,p1score,p2score,clk,rst,ready,paddle1,paddle2, serve);
+	input clk, rst, ready;
 	input paddle1, paddle2, serve;
 	
 	output reg [4:0] field;
@@ -94,7 +94,8 @@ module gameSM(field,p1score,p2score,clk,rst,paddle1,paddle2, serve);
 	
 	always @(posedge clk)
 	begin
-		S <= nS;
+		if (ready == 1) S <= nS;
+		else S <= S;
 	end
 
 endmodule
