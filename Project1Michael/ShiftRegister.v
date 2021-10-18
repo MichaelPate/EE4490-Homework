@@ -5,13 +5,13 @@
 
 module ShiftRegister(CurrentBit,ParallelDataIn,LoadRegister,RotateRegisterLeft,clk,reset);
   output CurrentBit;
-  input  [23:0] ParallelDataIn;
+  input  [119:0] ParallelDataIn;
   input  LoadRegister, RotateRegisterLeft;
   input  clk, reset;
 
-  parameter DEFAULTREG=24'h0F0F0F;  // white, half brightness
+  parameter DEFAULTREG=120'h0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F;  // white, half brightness
 
-  reg [23:0]  TheReg, nTheReg;  // 24 bits for GRB control
+  reg [119:0]  TheReg, nTheReg;  // 24 bits for GRB control
 
   always @(posedge clk)
     if(reset) TheReg <= DEFAULTREG;
@@ -22,9 +22,9 @@ module ShiftRegister(CurrentBit,ParallelDataIn,LoadRegister,RotateRegisterLeft,c
     if(LoadRegister)
       nTheReg = ParallelDataIn;
     else if(RotateRegisterLeft)
-      nTheReg = {TheReg[22:0],TheReg[23]};
+      nTheReg = {TheReg[118:0],TheReg[119]};
     else
       nTheReg = TheReg;
 
-  assign  CurrentBit = TheReg[23];
+  assign  CurrentBit = TheReg[119];
 endmodule
