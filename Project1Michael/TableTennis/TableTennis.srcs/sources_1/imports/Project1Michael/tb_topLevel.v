@@ -1,4 +1,4 @@
-`timescale 10ns/1ns
+`timescale 10ns/10ns
 `include "gameSM.v"
 `include "SimpleSend.v"
 `include "LEDPatternGenerator.v"
@@ -41,7 +41,7 @@ module tb_topLevel();
         #5 t_rst = 0;
         #120000 t_serve = 1;
         #240000 t_serve = 0;
-        #1800000 $finish;
+        #180000000 $finish;
     join
 
 endmodule
