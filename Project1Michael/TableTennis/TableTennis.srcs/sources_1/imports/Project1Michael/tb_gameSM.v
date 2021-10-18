@@ -2,11 +2,12 @@
 module tb_gameSM();
 	reg t_clk, t_rst;
 	reg t_paddle1, t_paddle2, t_serve;
+	reg t_ready;
 	
 	wire [4:0] t_field;
 	wire t_score1, t_score2;
 	
-	gameSM uut(t_field, t_score1, t_score2, t_clk, t_rst, t_paddle1, t_paddle2, t_serve);
+	gameSM uut(t_field, t_score1, t_score2, t_clk, t_rst, t_ready, t_paddle1, t_paddle2, t_serve);
 	
 	initial
 	begin
@@ -23,6 +24,7 @@ module tb_gameSM();
 		t_paddle1 = 1;
 		t_paddle2 = 1;
 		t_serve = 0;
+		t_ready = 1;
 	end
 	
 	initial
