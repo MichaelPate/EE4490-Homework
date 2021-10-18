@@ -66,8 +66,8 @@ set_property PACKAGE_PIN U16 [get_ports {readyLED}]
  
 ## Button
 # BTNC
-#set_property PACKAGE_PIN U18 [get_ports {Go}]                    
-    #set_property IOSTANDARD LVCMOS33 [get_ports {Go}]
+set_property PACKAGE_PIN U18 [get_ports {rst}]                    
+    set_property IOSTANDARD LVCMOS33 [get_ports {rst}]
 set_property PACKAGE_PIN T18 [get_ports {serve}]						
 	set_property IOSTANDARD LVCMOS33 [get_ports {serve}]
 set_property PACKAGE_PIN W19 [get_ports {paddle1}]						

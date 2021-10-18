@@ -20,7 +20,7 @@ module topLevel(RGBSerialData, sevenSegmentDigit, sevenSegmentData, readyLED, cl
     wire [119:0] colorData;
     wire ReadyForNextState;
 
-    assign readyLED = ReadyForNextState;
+    assign readyLED = gameClk;
 
     gameSM MainGameSM(currentField, player1score, player2score,
         gameClk, rst, ReadyForNextState, paddle1, paddle2, serve);
