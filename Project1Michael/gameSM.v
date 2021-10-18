@@ -11,7 +11,7 @@ module gameSM(field,p1score,p2score,clk,rst,paddle1,paddle2, serve);
 	input clk, rst;
 	input paddle1, paddle2, serve;
 	
-	output [4:0] field;
+	output reg [4:0] field;
 	output reg p1score, p2score;
 	
 	reg dir = 1;
