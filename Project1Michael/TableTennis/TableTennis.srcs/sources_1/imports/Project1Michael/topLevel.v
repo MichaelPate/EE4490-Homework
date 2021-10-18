@@ -21,7 +21,7 @@ module topLevel(RGBSerialData, sevenSegmentDigit, sevenSegmentData, readyLED, cl
     wire ReadyForNextState;
     wire rst;
 
-    assign readyLED = ReadyForNextState;
+    assign readyLED = gameClk;
     assign rst = !rstAL;
  
     gameSM MainGameSM(currentField, player1score, player2score,
