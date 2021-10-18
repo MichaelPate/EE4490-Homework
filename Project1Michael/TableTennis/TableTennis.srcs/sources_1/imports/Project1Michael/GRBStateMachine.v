@@ -47,7 +47,7 @@ module GRBStateMachine(qmode,Done,LoadGRBPattern,ShiftPattern,StartCoding,
       3'b001:  COMPAREVAL = 23;  // 1*24 = 24 bits
       3'b010:  COMPAREVAL = 47;  // 2*24 = 48 bits
       3'b011:  COMPAREVAL = 71;  // 3*24 = 72 bits
-			3'b100:  COMPAREVAL = 95;  // 4*24 = 96 bits
+	  3'b100:  COMPAREVAL = 95;  // 4*24 = 96 bits
       3'b101:  COMPAREVAL = 119; // 5*24 = 120 bits
       default: COMPAREVAL = 23;  // default to one module
     endcase

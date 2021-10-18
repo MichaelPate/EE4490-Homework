@@ -40,8 +40,8 @@ module tb_topLevel();
     begin
         #5 t_rst = 0;
         #30 t_serve = 1;
-        #60 t_serve = 0;
-        #4000 $finish;
+        #6000 t_serve = 0;
+        #900000 $finish;
     end
 
 endmodule
