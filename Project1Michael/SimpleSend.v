@@ -3,11 +3,12 @@
 // VERY basic design, sends same color to all modules
 // Updated to support new WS2812B reset code of > 280 us
 
-module SimpleSend(dataOut,ColorDataIn,NumLEDs,Go,clk,reset,Ready2Go);
+module SimpleSend(dataOut,ColorDataIn,Go,clk,reset,Ready2Go);
 	output	dataOut, Ready2Go;
 	input   [23:0] ColorDataIn;
-	input   [3:1]  NumLEDs;
 	input	Go, clk, reset;
+
+	reg [3:0] NumLEDs = 4'd5;
 
 	wire		shipGRB, Done, allDone;
 	wire [1:0]	qmode;
