@@ -5,16 +5,17 @@ module LEDPatternGenerator(colorOutput, fieldInput);
     always @(fieldInput)
     begin
         case(fieldInput)
-            5'b10000:   colorOutput = 120'h00FF00101010101010101010101010;
-            5'b01000:   colorOutput = 120'h10101000FF00101010101010101010;
-            5'b00100:   colorOutput = 120'h10101000FF00101010101010101010;
-            5'b00010:   colorOutput = 120'h10101010101010101000FF00101010;
-            5'b00001:   colorOutput = 120'h10101010101010101010101000FF00;
-            default:    colorOutput = 120'h0F0F0F0F0F0F0F0F0F0F0F0F0F0F0F;
+            5'b10000:   colorOutput = 120'h00FF00000000000000000000000000;
+            5'b01000:   colorOutput = 120'h00000000FF00000000000000000000;
+            5'b00100:   colorOutput = 120'h00000000000000FF00000000000000;
+            5'b00010:   colorOutput = 120'h00000000000000000000FF00000000;
+            5'b00001:   colorOutput = 120'h00000000000000000000000000FF00;
+            5'b00000:   colorOutput = 120'h000000000000000000000000000000;
+            default:    colorOutput = 120'hFFFFFF000000000000000000000000;
         endcase
     end
 
 endmodule
 
 // 00FF00
-// 101010
+// 101010 -> FF0000 -> 000000

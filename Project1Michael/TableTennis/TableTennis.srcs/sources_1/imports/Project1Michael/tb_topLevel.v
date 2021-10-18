@@ -31,17 +31,18 @@ module tb_topLevel();
     begin
         t_rst = 1;
         t_clk = 0;
-        t_pad1 = 1;
-        t_pad2 = 1;
-        t_serve = 1;
+        t_pad1 = 0;
+        t_pad2 = 0;
+        t_serve = 0;
     end
 
     initial
     fork
         #5 t_rst = 0;
-        #120000 t_serve = 1;
-        #240000 t_serve = 0;
-        #180000000 $finish;
+        #150000 t_rst = 1;
+        #200000 t_rst = 0;
+        #650000 t_serve = 1;
+        #900000 $finish;
     join
 
 endmodule

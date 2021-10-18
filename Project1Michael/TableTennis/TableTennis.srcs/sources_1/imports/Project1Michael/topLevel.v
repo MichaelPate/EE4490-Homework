@@ -6,13 +6,14 @@
 
 **/
 
-module topLevel(RGBSerialData, sevenSegmentDigit, sevenSegmentData, readyLED, clk, rstAL, paddle1, paddle2, serve);
+module topLevel(RGBSerialData, sevenSegmentDigit, sevenSegmentData, readyLED, clk, rstAL, paddle1, paddle2, serve, diagnostics);
     input clk, rstAL;
     input paddle1, paddle2, serve;
     output RGBSerialData;
     output [3:0] sevenSegmentDigit;
     output [6:0] sevenSegmentData;
     output readyLED;
+    output [4:0] diagnostics;
 
     wire [4:0] currentField; 
     wire player1score, player2score;
@@ -22,6 +23,14 @@ module topLevel(RGBSerialData, sevenSegmentDigit, sevenSegmentData, readyLED, cl
     wire rst;
 
     assign readyLED = gameClk;
+    /**
+    assign diagnostics[0] = player1score;
+    assign diagnostics[1] = player2score;
+    assign diagnostics[2] = serve;
+    assign diagnostics[3] = ReadyForNextState;
+    **/
+    assign diagnostics = currentField;
+    
     assign rst = !rstAL;
  
     gameSM MainGameSM(currentField, player1score, player2score,
